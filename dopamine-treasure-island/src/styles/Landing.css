@@ -367,7 +367,7 @@ body {
   .header      { padding: 15px; }
   .footer      { padding: 30px 15px; }
 
-  .modal-container  { width: 95%; }
+  .modal-container  { width: 95%; position: relative}
   .modal-header     { position: relative; padding: 20px; min-height: auto; }
   .modal-close-btn  { width: 40px; height: 40px; top: 15px; right: 15px; }
 
