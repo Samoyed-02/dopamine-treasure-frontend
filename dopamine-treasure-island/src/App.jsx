@@ -28,7 +28,7 @@ import AdminUserClaims     from './pages/Admin/AdminUserClaims'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/dopamine-treasure-frontend/">
       <Routes>
 
         {/* ── 랜딩 ── */}
