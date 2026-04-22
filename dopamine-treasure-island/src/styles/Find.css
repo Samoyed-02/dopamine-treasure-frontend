@@ -62,6 +62,23 @@ body { background: #f5f5f5; font-family: sans-serif; }
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
+.treasure-text {
+  position: absolute;
+  /* 중앙 정렬 공식 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  
+  /* 디자인 요소 */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 글자 가독성 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  
+  /* 텍스트가 클릭을 방해하지 않도록 설정 (이미지의 onClick이 잘 작동하게 함) */
+  pointer-events: none; 
+}
 
 .mission-box {
     background: #f0f0f0;
@@ -135,3 +152,33 @@ body { background: #f5f5f5; font-family: sans-serif; }
     text-decoration: none;  /* 밑줄 제거 */
 }
 
+.treasure-container {
+  position: relative; /* 글자 배치의 기준점 */
+  display: inline-block; /* 컨테이너 크기를 이미지에 맞춤 */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.treasure-container:hover {
+  transform: scale(1.05); /* 마우스 올렸을 때 약간 커지는 효과 */
+}
+
+.treasure-box {
+  display: block;
+  max-width: 200px; /* 원하는 이미지 크기로 조절 */
+  height: auto;
+}
+
+.treasure-text {
+  position: absolute;
+  top: 50%; /* 세로 중앙 */
+  left: 50%; /* 가로 중앙 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+  
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 이미지 위에서 잘 보이게 그림자 추가 */
+  pointer-events: none; /* 글자가 클릭 이벤트를 방해하지 않도록 설정 */
+  white-space: nowrap;
+}

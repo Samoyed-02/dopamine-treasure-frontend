@@ -4,11 +4,11 @@ import { client } from './client'
 export const verifyMission = (locationId, formData) =>
   client.postForm(`/locations/${locationId}/verify`, formData)
 
-export const claimTreasure = (locationId, studentId) => {
-  const formData = new FormData()
-  formData.append('student_id', studentId)
-  return client.postForm(`/locations/${locationId}/claim`, formData)
-}
+// api/index.js 예시
+export const claimTreasure = async (location_id, data) => {
+  const response = await axios.post(`${BASE_URL}/locations/${location_id}/claim`, data);
+  return response.data;
+};
 // ─── 보물 숨기기 ───────────────────────────────────────────────
 export const hideTreasure = (formData) =>
   client.postForm('/treasures', formData)

@@ -34,6 +34,9 @@ export default function HideMissionDetail() {
     setShowModal(false)
     setLoading(true)
 
+    console.log('state 전체:', state)        // ← 추가
+    console.log('content:', state?.content)
+
     const userInfo = state?.userInfo || {}
 
     const formData = new FormData()

@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { getLocation, verifyMission } from '@/api'
 import '@/styles/Find.css'
 import back from '@/assets/img/back.png'
+import logo from '@/assets/img/bennerminilogo.png'
 
 export default function MissionPhoto() {
   const navigate = useNavigate()
@@ -42,46 +43,25 @@ export default function MissionPhoto() {
   }
 
   // 사진 제출
-  async function submitPhoto() {
-    if (!file) {
-      alert('사진을 촬영하거나 업로드해주세요!')
-      return
-    }
-
-    setLoading(true)
-
-    const userInfo = state?.userInfo || {}
-
-    const formData = new FormData()
-    formData.append('name', userInfo.name || '익명')
-    formData.append('student_id', userInfo.student_id || '00000000')
-    formData.append('department', userInfo.department || '미소속')
-    formData.append('mission_type', 'photo')
-    formData.append('image', file)
-
-    try {
-      const result = await verifyMission(locationId, formData)
-
-      if (result.success || result.status === 'success') {
-        // 전화번호 입력 페이지로 이동 + userInfo 전달
-        navigate('/phone', {
-          state: {
-            userInfo: {
-              ...userInfo,
-              location_id: locationId,
-              image: file,
-            },
-          },
-        })
-      } else {
-        alert('제출 실패: ' + (result.message || '다시 시도해주세요.'))
-      }
-    } catch {
-      alert('업로드 에러 발생. 다시 시도해주세요.')
-    } finally {
-      setLoading(false)
-    }
+ function submitPhoto() {
+  if (!file) {
+    alert('사진을 촬영하거나 업로드해주세요!')
+    return
   }
+
+  const userInfo = state?.userInfo || {}
+
+  navigate('/phone', {
+    state: {
+      ...state,
+      userInfo: {
+        ...userInfo,
+        location_id: locationId,
+        image: file,
+      },
+    },
+  })
+}
 
   return (
     <div className="mission-body">
@@ -90,7 +70,7 @@ export default function MissionPhoto() {
           <img src={back} alt="뒤로가기" />
         </button>
         <div className="logo-container">
-          <img src="./img/bennerminilogo.png" className="logo" alt="로고" />
+          <img src={logo} className="logo" alt="로고" />
         </div>
       </header>
 

@@ -38,6 +38,7 @@ export default function App() {
         <Route path="/locations"          element={<TreasureMap />} />
         <Route path="/missions/:id/quiz"  element={<QuizMission />} />
         <Route path="/missions/:id/photo" element={<PhotoMission />} />
+        <Route path="/result/:id"         element={<MissionResult />} />
         <Route path="/result"             element={<MissionResult />} />
         <Route path="/phone"              element={<PhoneInput />} />
         <Route path="/locations/:id"      element={<LocationDetail />} />

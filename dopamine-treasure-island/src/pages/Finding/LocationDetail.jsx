@@ -8,7 +8,12 @@ export default function LocationDetail() {
   const { state } = useLocation()
 
   useEffect(() => {
-    getLocation(id)
+    const userInfo = state?.userInfo || JSON.parse(localStorage.getItem('userInfo')) || {}
+    console.log('userInfo:', userInfo)  // ← 추가
+    console.log('student_id:', userInfo?.student_id)  // ← 추가
+    console.log('getLocation 호출:', id, userInfo?.student_id)  // ← 추가
+
+    getLocation(id, userInfo?.student_id)
       .then((data) => {
         if (!data.mission_type) {
           alert('이 장소에는 보물이 없어요!')
