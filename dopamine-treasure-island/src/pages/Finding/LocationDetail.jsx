@@ -9,12 +9,18 @@ export default function LocationDetail() {
 
   useEffect(() => {
     const userInfo = state?.userInfo || JSON.parse(localStorage.getItem('userInfo')) || {}
-    console.log('userInfo:', userInfo)  // ← 추가
-    console.log('student_id:', userInfo?.student_id)  // ← 추가
-    console.log('getLocation 호출:', id, userInfo?.student_id)  // ← 추가
-
+    console.log('student_id 타입:', typeof userInfo?.student_id)
+console.log('student_id 값:', userInfo?.student_id)
+   
     getLocation(id, userInfo?.student_id)
       .then((data) => {
+        console.log('location data:', data)  // ← 추가
+        console.log('is_own:', data.is_own)  // ← 추가
+        if (data.is_own){
+          alert('내가 숨긴 보물이에요! 다른 장소를 탐험해보세요')
+          navigate(-1)
+          return
+        }
         if (!data.mission_type) {
           alert('이 장소에는 보물이 없어요!')
           navigate(-1)

@@ -21,7 +21,8 @@ export default function MissionQuiz() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    getLocation(locationId)
+    const userInfo = state?.useInfo || JSON.parse(localStorage.getItem('userInfo'))|| {}
+    getLocation(locationId, userInfo?.student_id)
       .then((data) => {
         setLocationName(data.name)
         setMissionText(data.mission_content)
