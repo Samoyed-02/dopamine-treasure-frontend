@@ -124,7 +124,7 @@ function handleSubmit() {
           <button className="btn btn-admin" onClick={() => navigate('/admin')}>
             <img src={adminBtn} alt="관리자" className="btn-image" />
           </button>
-          <button className="btn btn-report">
+          <button className="btn btn-report" onClick={() => window.open('https://open.kakao.com/o/sW4xEyqi', '_blank')} >
             <img src={problemBtn} alt="불편사항 제보하기" className="btn-image" />
           </button>
         </div>

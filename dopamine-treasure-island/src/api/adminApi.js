@@ -8,5 +8,5 @@ export const getAdminTreasures = (page = 1, status = '') =>
 export const getAdminAttempts  = ()                     => client.get('/admin/attempts')
 export const getAdminClaims    = ()                     => client.get('/admin/claims')
 export const getAdminStats     = ()                     => client.get('/admin/stats')
-export const patchAttempt      = (id, status)           => client.patch(`/admin/attempts/${id}`, { status })
+export const patchAttempt = (id, payload) => client.patch(`/admin/attempts/${id}`, payload)
 export const patchTreasure     = (id, payload)          => client.patch(`/admin/treasures/${id}`, payload)
