@@ -4,7 +4,7 @@ import back from '@/assets/img/back.png'
 
 const MISSION_TYPES = [
   { type: 'quiz',  label: '퀴즈형 미션' },
-  { type: 'photo', label: '사진촬영 미션' },
+  { type: 'photo', label: '사진촬영 미션(기프티콘 등록 필수!)' },
 ]
 
 export default function HideSelectMission() {

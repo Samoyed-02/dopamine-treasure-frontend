@@ -40,6 +40,7 @@ export default function PhoneSubmit() {
       const result = await verifyMission(userInfo.location_id, formData);
 
       if (result.success) {
+        localStorage.setItem('pendingMission', 'true')
         alert(result.message || '사진이 제출되었습니다! 관리자 승인을 기다려주세요.'); 
         navigate('/locations');
       } else {
@@ -101,7 +102,7 @@ export default function PhoneSubmit() {
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button style={styles.btnCancel} onClick={() => setConfirmModal(false)}>취소</button>
-              <button style={styles.btnConfirm} onClick={() => navigate('/locations')}>종료</button>
+              <button style={styles.btnConfirm} onClick={() => navigate('/')}>종료</button>
             </div>
           </div>
         </div>

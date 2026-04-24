@@ -23,7 +23,7 @@ export default function HideMissionDetail() {
       alert('미션 문제를 입력해주세요!')
       return
     }
-    if (!missionAnswer.trim()) {
+    if (state?.missionType === 'quiz' && !missionAnswer.trim()) {
       alert('정답을 입력해주세요!')
       return
     }
@@ -55,7 +55,9 @@ export default function HideMissionDetail() {
     try {
       const result = await hideTreasure(formData)
       if (result.success) {
-        navigate('/hide/complete', { replace: true })
+        navigate('/hide/complete', { 
+          replace: true,
+          state: {userInfo: userInfo}})
       } else {
         alert(result.message || '등록에 실패했어요. 다시 시도해주세요.')
       }
@@ -79,8 +81,10 @@ export default function HideMissionDetail() {
         placeholder="문제를 입력하세요"
         value={missionContent}
         onChange={(e) => setMissionContent(e.target.value)}
-      />
+      />  
+  
 
+    {state?.missionType === 'quiz' && (  
       <input
         type="text"
         className="sh-input"
@@ -88,6 +92,7 @@ export default function HideMissionDetail() {
         value={missionAnswer}
         onChange={(e) => setMissionAnswer(e.target.value)}
       />
+    )}
 
       <button
         className="sh-btn-main"

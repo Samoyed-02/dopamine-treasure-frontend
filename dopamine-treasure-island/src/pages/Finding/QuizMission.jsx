@@ -72,7 +72,7 @@ export default function MissionQuiz() {
       });
     }
   } catch (e) {
-    alert('서버 연결 실패. 다시 시도해주세요.');
+    alert('에러: ' + e.message);
   } finally {
     setLoading(false);
   }

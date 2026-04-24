@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import '@/styles/Hide.css'
 
 export default function HideComplete() {
   const navigate = useNavigate()
+  const { state } = useLocation()  // ✅ state 받기
 
   return (
     <div className="container">
@@ -16,7 +17,7 @@ export default function HideComplete() {
 
       <button
         style={{ background: '#f1f3f5' }}
-        onClick={() => navigate('/hide/type')}
+        onClick={() => navigate('/hide/type', { state: { userInfo: state?.userInfo } })}  // ✅ userInfo 넘기기
       >
         보물 하나 더 숨기기
       </button>

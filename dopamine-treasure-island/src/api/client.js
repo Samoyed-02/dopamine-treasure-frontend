@@ -11,7 +11,10 @@ async function request(endpoint, options = {}) {
   })
 
   const data = await res.json()
-  if (!res.ok) throw new Error(data.message || '서버 오류가 발생했어요')
+  if (!res.ok) {
+    console.log('서버 응답 status:', res.status)
+    console.log('서버 응답 data:', data)
+    throw new Error(data.message || '서버 오류가 발생했어요')}
   return data
 }
 
